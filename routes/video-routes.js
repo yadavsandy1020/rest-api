@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
 // Import video controller
 var videoController = require('../controller/video-controller');
 
-// Contact routes
+// routes
 router.route('/videos')
     .get(videoController.index)
     .post(videoController.new);
@@ -25,7 +25,7 @@ router.route('/videos/:video_id')
 // Import Playlist controller
 let playlistController = require('../controller/playlist-controller');
 
-// Contact routes
+//routes
 router.route('/playlists')
     .get(playlistController.index)
     .post(playlistController.new);
