@@ -15,7 +15,7 @@ let app = express();
 
 //Body Parser to handle post request data
 app.use(bodyParser.urlencoded({
-    extended:false
+    extended:true
 }));
 
 app.use(bodyParser.json());
@@ -33,7 +33,7 @@ app.use('/api', apiRoutes)
 let port =  process.env.PORT || 3001;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express'));
+app.get('/', (req, res) => res.send('Hello World'));
 
 // Launch app to listen to specified port
 app.listen(port, function () {

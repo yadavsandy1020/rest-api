@@ -1,6 +1,6 @@
 
 let mongoose = require('mongoose');
-let video = require('./video-model');
+let video = require('./video-model').VideoSchema;
 var Schema = mongoose.Schema;
 //setup schema
 
@@ -17,7 +17,7 @@ let PlayListSchema = new Schema({
         type: String,
         required: true
     },
-    videos: [video.VideoSchema]
+    videos: [video]
 
 });
 

@@ -23,13 +23,14 @@ exports.index = function (req, res) {
 
 // Handle create playlist actions
 exports.new = function (req, res) {
+   
     let playlist = new Playlist();
     playlist._id = req.body._id;
     playlist.name = req.body.name ? req.body.name : playlist.name;
     playlist.website = req.body.website ? req.body.website : playlist.website;
-    playlist.videos = req.body.videos;
+    playlist.videos = JSON.parse(req.body.videos);
    
-
+    console.log(playlist);
     // save the playlist and check for errors
     playlist.save(function (err) {
         if (err) {
