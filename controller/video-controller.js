@@ -24,8 +24,9 @@ exports.index = function (req, res) {
 // Handle create videos actions
 exports.new = function (req, res) {
     let video = new Video();
-    video.title = req.body.title ? req.body.tile : video.title;
-    video.thumbnail = req.body.thumbnail ? req.body.thumbnail : contact.thumbnail;
+    video._id = req.body._id;
+    video.title = req.body.title ? req.body.title : video.title;
+    video.thumbnail = req.body.thumbnail ? req.body.thumbnail : video.thumbnail;
     video.videoURL = req.body.videoURL;
     video.duration = req.body.duration;
 
@@ -35,8 +36,8 @@ exports.new = function (req, res) {
             res.json(err);
         } else {
             res.json({
-                message: 'New contact created!',
-                data: contact
+                message: 'New video created!',
+                data: video
             });
         }
 
@@ -51,29 +52,6 @@ exports.view = function (req, res) {
         res.json({
             message: 'Video details loading..',
             data: video
-        });
-    });
-};
-
-
-// Handle update video info
-exports.update = function (req, res) {
-    Video.findById(req.params.video_id, function (err, video) {
-        if (err)
-            res.send(err);
-        video.title = req.body.title ? req.body.tile : video.title;
-        video.thumbnail = req.body.thumbnail ? req.body.thumbnail : contact.thumbnail;
-        video.videoURL = req.body.videoURL;
-        video.duration = req.body.duration;
-
-        // save the video and check for errors
-        video.save(function (err) {
-            if (err)
-                res.json(err);
-            res.json({
-                message: 'Video Info updated',
-                data: video
-            });
         });
     });
 };

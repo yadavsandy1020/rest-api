@@ -1,9 +1,13 @@
 
 let mongoose = require('mongoose');
-
+var Schema = mongoose.Schema;
 //setup schema
 
-let VideoSchema = mongoose.Schema({
+let VideoSchema = new Schema({
+    _id:{
+        type: Number,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -30,3 +34,5 @@ let Video = module.exports = mongoose.model('video', VideoSchema);
 module.exports.get = function(callback, limit){
     Video.find(callback).limit(limit);
 }
+
+module.exports.VideoSchema = VideoSchema;

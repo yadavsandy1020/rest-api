@@ -15,7 +15,7 @@ let app = express();
 
 //Body Parser to handle post request data
 app.use(bodyParser.urlencoded({
-    extended:true
+    extended:false
 }));
 
 app.use(bodyParser.json());

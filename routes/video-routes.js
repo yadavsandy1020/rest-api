@@ -17,11 +17,21 @@ var videoController = require('../controller/video-controller');
 router.route('/videos')
     .get(videoController.index)
     .post(videoController.new);
-router.route('/video/:video_id')
+router.route('/videos/:video_id')
     .get(videoController.view)
-    .patch(videoController.update)
-    .put(videoController.update)
     .delete(videoController.delete);
+
+
+// Import Playlist controller
+let playlistController = require('../controller/playlist-controller');
+
+// Contact routes
+router.route('/playlists')
+    .get(playlistController.index)
+    .post(playlistController.new);
+router.route('/playlists/:playlist_id')
+    .get(playlistController.view)
+    .delete(playlistController.delete);
 //export API routes
 
 module.exports = router;
